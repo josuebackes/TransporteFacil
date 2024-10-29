@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1036742996903",
+    "project_id": "transporte-facil-cb008",
+    "storage_bucket": "transporte-facil-cb008.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1036742996903:android:e57ead0d6b2aba46323c82",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByR5n-hBBTqR7a_7yr4sSHn57oMNj9giY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

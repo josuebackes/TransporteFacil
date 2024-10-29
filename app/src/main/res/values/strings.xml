@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">TRANSPORTE FÁCIL</string>
+    <string-array name="dias_da_semana">
+        <item>Todos</item>
+        <item>Domingo</item>
+        <item>Segunda</item>
+        <item>Terça</item>
+        <item>Quarta</item>
+        <item>Quinta</item>
+        <item>Sexta</item>
+        <item>Sábado</item>
+    </string-array>
+</resources>

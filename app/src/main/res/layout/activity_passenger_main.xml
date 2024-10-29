@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lista_passageiros"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".Activity.PassengerMainActivity">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#ffa600"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_scrollFlags="scroll|enterAlways" />
+
+    <!-- ScrollView para o conteúdo principal -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:gravity="center"
+            android:clipToPadding="false">
+
+            <TextView
+                android:id="@+id/txt_selecionar_dias"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Selecione os dias:"
+                android:textSize="18sp"
+                android:paddingBottom="8dp"
+                android:textColor="@android:color/white"
+                android:visibility="gone"/>
+
+            <!-- Checkboxes para os dias da semana -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="16dp">
+
+                <CheckBox
+                    android:id="@+id/checkbox_monday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Seg"
+                    android:textColor="@android:color/white"
+                    android:visibility="gone" />
+
+                <CheckBox
+                    android:id="@+id/checkbox_tuesday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ter"
+                    android:textColor="@android:color/white"
+                    android:visibility="gone" />
+
+                <CheckBox
+                    android:id="@+id/checkbox_wednesday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Qua"
+                    android:textColor="@android:color/white"
+                    android:visibility="gone" />
+
+                <CheckBox
+                    android:id="@+id/checkbox_thursday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Qui"
+                    android:textColor="@android:color/white"
+                    android:visibility="gone" />
+
+                <CheckBox
+                    android:id="@+id/checkbox_friday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sex"
+                    android:textColor="@android:color/white"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <!-- TimePickers para horários de ida e volta -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Horário de início:"
+                android:textSize="18sp"
+                android:textColor="@android:color/white"
+                android:visibility="gone"
+                android:id="@+id/ida"/>
+
+            <TimePicker
+                android:id="@+id/time_picker_going"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:timePickerMode="spinner"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:tint="#FFFFFF"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Horário de término:"
+                android:textSize="18sp"
+                android:textColor="@android:color/white"
+                android:visibility="gone"
+                android:id="@+id/volta"
+                android:tint="#FFFFFF"/>
+
+            <TimePicker
+                android:id="@+id/time_picker_return"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:timePickerMode="spinner"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:tint="#FFFFFF"/>
+
+            <!-- Botão para salvar os dados -->
+            <Button
+                android:id="@+id/btn_save_schedule"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:text="Salvar"
+                app:backgroundTint="#ffffff"
+                android:textColor="#ffa600"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btn_cancelar_schedule"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:text="Cancelar"
+                app:backgroundTint="#ffb300"
+                android:textColor="@color/white"
+                android:visibility="gone"/>
+        </LinearLayout>
+    </ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

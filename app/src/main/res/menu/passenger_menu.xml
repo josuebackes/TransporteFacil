@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:icon="@drawable/baseline_dehaze_24"
+        android:title=" "
+        app:showAsAction="always">
+
+        <menu>
+            <item
+                android:id="@+id/passenger_action_show_passenger"
+                android:title="Atualizar dados"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/passenger_action_diary"
+                android:title="Definir dias e horários"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/passenger_action_show_contac"
+                android:title="Contatos"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/passenger_action_show_logout"
+                android:title="Sair"
+                app:showAsAction="never" />
+
+        </menu>
+
+    </item>
+
+</menu>

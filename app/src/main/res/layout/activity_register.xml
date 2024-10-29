@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lista_passageiros"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/background"
+    tools:context=".Activity.Register">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:text="Eu sou:"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="40sp"/>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="34dp"
+        android:id="@+id/rg_option">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Passageiro"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:buttonTint="@color/white"
+            android:id="@+id/rb_passenger" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Responsável"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:buttonTint="@color/white"
+            android:id="@+id/rb_responsible"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Motorista"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:buttonTint="@color/white"
+            android:id="@+id/rb_driver"/>
+
+    </RadioGroup>
+
+    <Button
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        app:backgroundTint="@android:color/white"
+        android:textColor="@android:color/holo_orange_dark"
+        android:text="Continuar"
+        android:layout_marginTop="24dp"
+        android:id="@+id/btn_continue"/>
+
+    <Button
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        app:backgroundTint="#ffb300"
+        android:textColor="@color/white"
+        android:text="Voltar"
+        android:layout_marginTop="24dp"
+        android:id="@+id/btn_return"/>
+
+</LinearLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:icon="@drawable/baseline_dehaze_24"
+        android:title=" "
+        app:showAsAction="always">
+
+        <menu>
+            <item
+                android:id="@+id/driver_action_show_driver"
+                android:title="Atualizar dados motorista"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/driver_action_show_passenger"
+                android:title="Exibir dados passageiros"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/driver_action_show_diary"
+                android:title="Exibir agenda"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/driver_action_show_logout"
+                android:title="Sair"
+                app:showAsAction="never" />
+
+        </menu>
+
+    </item>
+
+</menu>
