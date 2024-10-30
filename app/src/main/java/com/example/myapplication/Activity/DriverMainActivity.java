@@ -162,7 +162,7 @@ public class DriverMainActivity extends AppCompatActivity {
             return true;
 
         } else if (id == R.id.driver_action_show_diary) {
-            Toast.makeText(this, "Exibir agenda", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Controle de passageiros", Toast.LENGTH_SHORT).show();
             return true;
 
         } else if (id == R.id.driver_action_show_logout) {

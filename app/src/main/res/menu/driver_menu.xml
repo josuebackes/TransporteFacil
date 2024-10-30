@@ -15,12 +15,12 @@
 
             <item
                 android:id="@+id/driver_action_show_passenger"
-                android:title="Exibir dados passageiros"
+                android:title="Exibir passageiros cadastrados"
                 app:showAsAction="never" />
 
             <item
                 android:id="@+id/driver_action_show_diary"
-                android:title="Exibir agenda"
+                android:title="Controle de passageiros"
                 app:showAsAction="never" />
 
             <item

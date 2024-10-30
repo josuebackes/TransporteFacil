@@ -31,10 +31,17 @@ public class PassengerUserModel {
     private String returnTime;
     private CronogramaModel cronograma;
 
+    private boolean embarkGo;
+    private boolean disembarkGo;
+    private boolean embarkReturn;
+    private boolean disembarkReturn;
+
     public PassengerUserModel() {}
 
     // Adicione um construtor com o campo cronograma
-    public PassengerUserModel(String id, String nome, String sobrenome, String cpf, String telefone, String dataNascimento, String email, String rua, String numeroCasa, String cidade, String bairro, String estado, String cep, String userType, CronogramaModel cronograma) {
+
+
+    public PassengerUserModel(String id, String nome, String sobrenome, String cpf, String telefone, String dataNascimento, String email, String rua, String numeroCasa, String bairro, String cidade, String estado, String cep, String userType, List<String> scheduleDays, String goingTime, String returnTime, CronogramaModel cronograma, boolean embarkGo, boolean disembarkGo, boolean embarkReturn, boolean disembarkReturn) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
@@ -49,7 +56,14 @@ public class PassengerUserModel {
         this.estado = estado;
         this.cep = cep;
         this.userType = userType;
+        this.scheduleDays = scheduleDays;
+        this.goingTime = goingTime;
+        this.returnTime = returnTime;
         this.cronograma = cronograma;
+        this.embarkGo = embarkGo;
+        this.disembarkGo = disembarkGo;
+        this.embarkReturn = embarkReturn;
+        this.disembarkReturn = disembarkReturn;
     }
 
     public void setCronograma(CronogramaModel cronograma) {
@@ -191,6 +205,18 @@ public class PassengerUserModel {
     public void setReturnTime(String returnTime) {
         this.returnTime = returnTime;
     }
+
+    public boolean isEmbarkGo() { return embarkGo; }
+    public void setEmbarkGo(boolean embarkGo) { this.embarkGo = embarkGo; }
+
+    public boolean isDisembarkGo() { return disembarkGo; }
+    public void setDisembarkGo(boolean disembarkGo) { this.disembarkGo = disembarkGo; }
+
+    public boolean isEmbarkReturn() { return embarkReturn; }
+    public void setEmbarkReturn(boolean embarkReturn) { this.embarkReturn = embarkReturn; }
+
+    public boolean isDisembarkReturn() { return disembarkReturn; }
+    public void setDisembarkReturn(boolean disembarkReturn) { this.disembarkReturn = disembarkReturn; }
 
     public void Salvar() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
