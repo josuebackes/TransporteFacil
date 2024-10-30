@@ -229,13 +229,13 @@ public class PassengerUserModel {
 
     private String getDayString(int dayOfWeek) {
         switch (dayOfWeek) {
-            case Calendar.MONDAY: return "segunda";
-            case Calendar.TUESDAY: return "terça";
-            case Calendar.WEDNESDAY: return "quarta";
-            case Calendar.THURSDAY: return "quinta";
-            case Calendar.FRIDAY: return "sexta";
-            case Calendar.SATURDAY: return "sábado";
-            case Calendar.SUNDAY: return "domingo";
+            case Calendar.MONDAY: return "Segunda";
+            case Calendar.TUESDAY: return "Terça";
+            case Calendar.WEDNESDAY: return "Quarta";
+            case Calendar.THURSDAY: return "Quinta";
+            case Calendar.FRIDAY: return "Sexta";
+            case Calendar.SATURDAY: return "Sábado";
+            case Calendar.SUNDAY: return "Domingo";
             default: return "";
         }
     }
@@ -247,10 +247,10 @@ public class PassengerUserModel {
             endereco.append(rua);
         }
         if (numeroCasa != null && !numeroCasa.isEmpty()) {
-            endereco.append(", ").append(numeroCasa);
+            endereco.append(", Número ").append(numeroCasa);
         }
         if (bairro != null && !bairro.isEmpty()) {
-            endereco.append(", ").append(bairro);
+            endereco.append(", Bairro ").append(bairro);
         }
         if (cidade != null && !cidade.isEmpty()) {
             endereco.append(", ").append(cidade);

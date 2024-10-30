@@ -1,20 +1,22 @@
 package com.example.myapplication.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.Model.PassengerUserModel;
+import com.example.myapplication.PassengerAdapter;
 import com.example.myapplication.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,24 +33,33 @@ public class ShowPassenger extends AppCompatActivity {
     private DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
     private DatabaseReference passageiros = referencia.child("usuarios");
 
-    private ListView listaPassageiros;
-    private ArrayList<String> pass;
+    private RecyclerView recyclerViewPassageiros;
+    private PassengerAdapter passengerAdapter;
+    private ArrayList<PassengerUserModel> passengerList;
 
     private Spinner spinnerDia;
-    private String diaSelecionado = "Todos"; 
+    private String diaSelecionado = "Todos";
     private Button btnFiltrar;
+    private Button btnVoltar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_show_passenger);
 
-        listaPassageiros = findViewById(R.id.lv_passageiros);
+        recyclerViewPassageiros = findViewById(R.id.rv_passageiros);
         spinnerDia = findViewById(R.id.seu_spinner_dia_id);
         btnFiltrar = findViewById(R.id.seu_botao_filtrar_id);
-        pass = new ArrayList<>();
+        btnVoltar = findViewById(R.id.seu_botao_voltar_id);
 
+        passengerList = new ArrayList<>();
+
+        // Configuração do RecyclerView
+        recyclerViewPassageiros.setLayoutManager(new LinearLayoutManager(this));
+        passengerAdapter = new PassengerAdapter(this, passengerList);
+        recyclerViewPassageiros.setAdapter(passengerAdapter);
+
+        // Configuração do Spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.dias_da_semana, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -58,6 +69,7 @@ public class ShowPassenger extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 diaSelecionado = parentView.getItemAtPosition(position).toString();
+                Log.d("ShowPassenger", "Dia selecionado no Spinner: " + diaSelecionado);
             }
 
             @Override
@@ -73,16 +85,26 @@ public class ShowPassenger extends AppCompatActivity {
             }
         });
 
+        btnVoltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ShowPassenger.this, DriverMainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         carregarPassageiros();
     }
 
     private void carregarPassageiros() {
         Query nomePassageirosQuery = passageiros.orderByChild("userType").equalTo("passageiro");
-        nomePassageirosQuery.addValueEventListener(new ValueEventListener() {
+
+        nomePassageirosQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                pass.clear();
+                // Limpa a lista de passageiros para não duplicar resultados
+                passengerList.clear();
 
                 Log.d("ShowPassenger", "Número de passageiros encontrados: " + snapshot.getChildrenCount());
 
@@ -90,41 +112,22 @@ public class ShowPassenger extends AppCompatActivity {
                     PassengerUserModel passengerUserModel = dados.getValue(PassengerUserModel.class);
 
                     if (passengerUserModel != null) {
-                        Log.d("ShowPassenger", "Passageiro encontrado: " + passengerUserModel.getNome());
+                        List<String> scheduleDays = passengerUserModel.getCronograma() != null ? passengerUserModel.getCronograma().getScheduleDays() : null;
 
-                        // Verificando o userType
-                        if ("passageiro".equals(passengerUserModel.getUserType())) {
-                            String nome = passengerUserModel.getNome();
-                            String endereco = passengerUserModel.getEndereco();
-                            List<String> scheduleDays = passengerUserModel.getCronograma() != null ? passengerUserModel.getCronograma().getScheduleDays() : null;
+                        if (diaSelecionado.equals("Todos") ||
+                                (scheduleDays != null && scheduleDays.stream()
+                                        .anyMatch(day -> day.equalsIgnoreCase(diaSelecionado)))) {
 
-                            Log.d("ShowPassenger", "Dia selecionado: " + diaSelecionado);
-
-                            Log.d("ShowPassenger", "Dias do cronograma: " + (scheduleDays != null ? scheduleDays.toString() : "Nenhum"));
-
-                            if (diaSelecionado.equals("Todos") || (scheduleDays != null && scheduleDays.contains(diaSelecionado))) {
-                                String goingTime = passengerUserModel.getCronograma() != null ? passengerUserModel.getCronograma().getGoingTime() : "Não informado";
-                                String returnTime = passengerUserModel.getCronograma() != null ? passengerUserModel.getCronograma().getReturnTime() : "Não informado";
-
-                                String passengerInfo = nome + "\nEndereço: " + endereco +
-                                        "\nHorário de ida: " + goingTime +
-                                        "\nHorário de volta: " + returnTime +
-                                        "\nDias: " + (scheduleDays != null ? scheduleDays.toString() : "Não informado");
-
-                                pass.add(passengerInfo);
-
-                                Log.d("ShowPassenger", "Passageiro adicionado: " + passengerInfo);
-                            }
+                            passengerList.add(passengerUserModel);
+                            Log.d("ShowPassenger", "Passageiro adicionado: " + passengerUserModel.getNome());
                         }
-                    } else {
-                        Log.d("ShowPassenger", "Passageiro não encontrado na modelagem.");
                     }
                 }
 
-                ArrayAdapter<String> adaptador = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, pass);
-                listaPassageiros.setAdapter(adaptador);
+                // Notifica o adapter para atualizar o RecyclerView
+                passengerAdapter.notifyDataSetChanged();
 
-                Log.d("ShowPassenger", "Número de passageiros filtrados: " + pass.size());
+                Log.d("ShowPassenger", "Número de passageiros filtrados: " + passengerList.size());
             }
 
             @Override

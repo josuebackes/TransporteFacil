@@ -17,7 +17,8 @@ public class CronogramaModel {
     }
 
     public boolean containsDay(String day) {
-        return scheduleDays != null && scheduleDays.contains(day);
+        return scheduleDays != null &&
+                scheduleDays.stream().anyMatch(d -> d.equalsIgnoreCase(day));
     }
 
     // Getters e setters

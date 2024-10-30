@@ -1,18 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="10dp">
 
     <TextView
-        android:id="@+id/text_view_nome"
+        android:id="@+id/tv_nome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp" />
+        android:text="Nome: "
+        android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/text_view_dias"
+        android:id="@+id/tv_endereco"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14sp" />
+        android:text="Endereço: "
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_horario_ida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Horário de ida: "
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_horario_volta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Horário de volta: "
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_dias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dias: "
+        android:textSize="16sp" />
 </LinearLayout>
+
