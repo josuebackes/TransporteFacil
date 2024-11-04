@@ -2,8 +2,6 @@ package com.example.myapplication.Activity;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,88 +16,64 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
+import java.util.stream.Collectors;
 
 public class RegistroEmbarqueActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
-    private EmbarqueAdapter embarqueAdapter;
-    private List<PassengerUserModel> listaPassageiros;
     private static final String TAG = "RegistroEmbarqueActivity";
+    List<PassengerUserModel> allPassengers = new ArrayList<>();
+    EmbarqueAdapter embarqueAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_embarque);
 
-        recyclerView = findViewById(R.id.rv_embarque);
+        RecyclerView recyclerView = findViewById(R.id.rv_embarque);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        listaPassageiros = new ArrayList<>();
-        embarqueAdapter = new EmbarqueAdapter(listaPassageiros);
+
+        embarqueAdapter = new EmbarqueAdapter(new ArrayList<>());
         recyclerView.setAdapter(embarqueAdapter);
 
-        carregarPassageiros();
+        loadPassengersFromFirebase();
     }
 
-    private void carregarPassageiros() {
-        DatabaseReference usuariosRef = FirebaseDatabase.getInstance().getReference("usuarios");
-        usuariosRef.addValueEventListener(new ValueEventListener() {
+    private void loadPassengersFromFirebase() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("usuarios");
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                listaPassageiros.clear();
-                String hoje = obterDiaAtual();
-                Log.d(TAG, "Hoje é: " + hoje); // Log do dia atual
-
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    PassengerUserModel passageiro = dataSnapshot.getValue(PassengerUserModel.class);
-
-                    if (passageiro != null) {
-                        Log.d(TAG, "Passageiro carregado: " + passageiro.getNome() + ", UserType: " + passageiro.getUserType());
-
-                        // Verificar o tipo de usuário e se está programado para hoje
-                        if ("passageiro".equals(passageiro.getUserType())) {
-                            Log.d(TAG, "UserType é passageiro para: " + passageiro.getNome());
-
-                            if (passageiro.getCronograma() != null) {
-                                Log.d(TAG, "Cronograma presente para: " + passageiro.getNome());
-
-                                boolean scheduledToday = passageiro.getCronograma().containsDay(hoje);
-                                Log.d(TAG, "Scheduled for today (" + hoje + ") para " + passageiro.getNome() + ": " + scheduledToday);
-
-                                if (scheduledToday) {
-                                    listaPassageiros.add(passageiro);
-                                }
-                            } else {
-                                Log.d(TAG, "Cronograma está nulo para: " + passageiro.getNome());
-                            }
-                        }
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                allPassengers.clear(); // Limpar a lista antes de adicionar novos passageiros
+                Log.d(TAG, "Carregando passageiros do Firebase...");
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    PassengerUserModel passenger = snapshot.getValue(PassengerUserModel.class);
+                    if (passenger != null) {
+                        allPassengers.add(passenger); // Adiciona o passageiro à lista
+                        Log.d(TAG, "Passageiro carregado: " + passenger.getNome());
                     } else {
-                        Log.d(TAG, "Passageiro nulo no snapshot.");
+                        Log.w(TAG, "Passageiro nulo encontrado no snapshot.");
                     }
                 }
-
-                embarqueAdapter.notifyDataSetChanged();
-                if (listaPassageiros.isEmpty()) {
-                    Toast.makeText(RegistroEmbarqueActivity.this, "Nenhum passageiro para hoje.", Toast.LENGTH_SHORT).show();
-                }
+                Log.d(TAG, "Total de passageiros carregados: " + allPassengers.size());
+                filterPassengers();
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.e(TAG, "Erro ao carregar dados: " + error.getMessage());
-                Toast.makeText(RegistroEmbarqueActivity.this, "Erro ao carregar dados.", Toast.LENGTH_SHORT).show();
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e(TAG, "Erro ao carregar passageiros: " + databaseError.getMessage());
             }
         });
     }
 
-    private String obterDiaAtual() {
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE", new Locale("pt", "BR"));
-        String diaSemana = dateFormat.format(calendar.getTime());
-        return diaSemana.substring(0, 1).toUpperCase() + diaSemana.substring(1); // "Segunda", "Terça", etc.
+    private void filterPassengers() {
+        List<PassengerUserModel> filteredPassengers = allPassengers.stream()
+                .filter(p -> "passageiro".equals(p.getUserType()) && p.isScheduledForToday())
+                .collect(Collectors.toList());
+
+        Log.d(TAG, "Total de passageiros filtrados: " + filteredPassengers.size());
+
+        embarqueAdapter.updateData(filteredPassengers);
     }
 }

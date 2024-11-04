@@ -17,7 +17,7 @@
 
     <Button
         android:id="@+id/seu_botao_filtrar_id"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Filtrar"
         app:backgroundTint="@color/white"
@@ -34,7 +34,7 @@
 
     <Button
         android:id="@+id/seu_botao_voltar_id"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Voltar"
         app:backgroundTint="#ffb300"

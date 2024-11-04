@@ -9,20 +9,9 @@
 
         <menu>
             <item
-                android:id="@+id/passenger_action_show_passenger"
-                android:title="Atualizar dados"
-                app:showAsAction="never" />
-
-            <item
                 android:id="@+id/passenger_action_diary"
                 android:title="Definir dias e horários"
                 app:showAsAction="never" />
-
-            <item
-                android:id="@+id/passenger_action_show_contac"
-                android:title="Contatos"
-                app:showAsAction="never" />
-
             <item
                 android:id="@+id/passenger_action_show_logout"
                 android:title="Sair"

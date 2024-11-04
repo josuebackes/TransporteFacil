@@ -1,5 +1,6 @@
 package com.example.myapplication.Activity;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,4 +81,11 @@ public class EmbarqueAdapter extends RecyclerView.Adapter {
             cb_entregue = itemView.findViewById(R.id.cb_entregue);
         }
     }
+
+    public void updateData(List<PassengerUserModel> passageiros) {
+        this.passageiros = passageiros;
+        Log.d("EmbarqueAdapter", "Atualizando dados no adapter. Total de passageiros: " + passageiros.size());
+        notifyDataSetChanged();
+    }
+
 }
