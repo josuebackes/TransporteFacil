@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp"
+    >
+
+    <TextView
+        android:id="@+id/tv_nome_passageiro_embarque"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome: "
+        android:textSize="16sp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/tv_endereco_passageiro_embarque"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Endereço: "
+        android:textSize="16sp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/tv_horario_ida_passageiro_embarque"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Horário de ida: "
+        android:textSize="16sp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/tv_horario_volta_passageiro_embarque"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Horário de volta: "
+        android:textSize="16sp"
+        android:textColor="@color/black"/>
+
+    <CheckBox
+        android:id="@+id/cb_embarque"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Embarcado" />
+
+    <CheckBox
+        android:id="@+id/cb_entregue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Entregue" />
+
+</LinearLayout>

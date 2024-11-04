@@ -25,7 +25,6 @@ public class PassengerUserModel {
     private String cep;
     private String userType;
 
-    // Novos campos para o cronograma
     private List<String> scheduleDays;
     private String goingTime;
     private String returnTime;
@@ -37,9 +36,6 @@ public class PassengerUserModel {
     private boolean disembarkReturn;
 
     public PassengerUserModel() {}
-
-    // Adicione um construtor com o campo cronograma
-
 
     public PassengerUserModel(String id, String nome, String sobrenome, String cpf, String telefone, String dataNascimento, String email, String rua, String numeroCasa, String bairro, String cidade, String estado, String cep, String userType, List<String> scheduleDays, String goingTime, String returnTime, CronogramaModel cronograma, boolean embarkGo, boolean disembarkGo, boolean embarkReturn, boolean disembarkReturn) {
         this.id = id;

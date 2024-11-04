@@ -163,6 +163,8 @@ public class DriverMainActivity extends AppCompatActivity {
 
         } else if (id == R.id.driver_action_show_diary) {
             Toast.makeText(this, "Controle de passageiros", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(DriverMainActivity.this, RegistroEmbarqueActivity.class);
+            startActivity(intent);
             return true;
 
         } else if (id == R.id.driver_action_show_logout) {

@@ -1,5 +1,6 @@
 package com.example.myapplication.Model;
 
+import java.text.Normalizer;
 import java.util.List;
 
 public class CronogramaModel {
@@ -16,12 +17,6 @@ public class CronogramaModel {
         this.scheduleDays = scheduleDays;
     }
 
-    public boolean containsDay(String day) {
-        return scheduleDays != null &&
-                scheduleDays.stream().anyMatch(d -> d.equalsIgnoreCase(day));
-    }
-
-    // Getters e setters
     public String getGoingTime() {
         return goingTime;
     }
@@ -44,5 +39,19 @@ public class CronogramaModel {
 
     public void setScheduleDays(List<String> scheduleDays) {
         this.scheduleDays = scheduleDays;
+    }
+
+    public boolean containsDay(String day) {
+        if (scheduleDays == null) return false;
+
+        String normalizedDay = normalizeString(day);
+        return scheduleDays.stream()
+                .anyMatch(d -> normalizeString(d).equals(normalizedDay));
+    }
+
+    private String normalizeString(String input) {
+        return Normalizer.normalize(input, Normalizer.Form.NFD)
+                .replaceAll("[^\\p{ASCII}]", "")
+                .toLowerCase();
     }
 }
