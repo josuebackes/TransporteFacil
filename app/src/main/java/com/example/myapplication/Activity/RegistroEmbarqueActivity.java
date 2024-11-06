@@ -45,12 +45,12 @@ public class RegistroEmbarqueActivity extends AppCompatActivity {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                allPassengers.clear(); // Limpar a lista antes de adicionar novos passageiros
+                allPassengers.clear();
                 Log.d(TAG, "Carregando passageiros do Firebase...");
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     PassengerUserModel passenger = snapshot.getValue(PassengerUserModel.class);
                     if (passenger != null) {
-                        allPassengers.add(passenger); // Adiciona o passageiro à lista
+                        allPassengers.add(passenger);
                         Log.d(TAG, "Passageiro carregado: " + passenger.getNome());
                     } else {
                         Log.w(TAG, "Passageiro nulo encontrado no snapshot.");

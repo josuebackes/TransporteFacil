@@ -54,12 +54,10 @@ public class ShowPassenger extends AppCompatActivity {
 
         passengerList = new ArrayList<>();
 
-        // Configuração do RecyclerView
         recyclerViewPassageiros.setLayoutManager(new LinearLayoutManager(this));
         passengerAdapter = new PassengerAdapter(this, passengerList);
         recyclerViewPassageiros.setAdapter(passengerAdapter);
 
-        // Configuração do Spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.dias_da_semana, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -74,7 +72,7 @@ public class ShowPassenger extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                // Não faz nada
+
             }
         });
 
@@ -103,7 +101,6 @@ public class ShowPassenger extends AppCompatActivity {
         nomePassageirosQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                // Limpa a lista de passageiros para não duplicar resultados
                 passengerList.clear();
 
                 Log.d("ShowPassenger", "Número de passageiros encontrados: " + snapshot.getChildrenCount());
@@ -124,7 +121,6 @@ public class ShowPassenger extends AppCompatActivity {
                     }
                 }
 
-                // Notifica o adapter para atualizar o RecyclerView
                 passengerAdapter.notifyDataSetChanged();
 
                 Log.d("ShowPassenger", "Número de passageiros filtrados: " + passengerList.size());

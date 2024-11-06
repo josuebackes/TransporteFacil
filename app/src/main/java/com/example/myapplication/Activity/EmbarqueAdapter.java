@@ -44,17 +44,17 @@ public class EmbarqueAdapter extends RecyclerView.Adapter {
             if (passageiro.getCronograma().getGoingTime() != null) {
                 viewHolderClass.tv_horario_ida_passageiro_embarque.setText("Horário de ida: " + passageiro.getCronograma().getGoingTime());
             } else {
-                viewHolderClass.tv_horario_ida_passageiro_embarque.setText(""); // Ou outro valor padrão
+                viewHolderClass.tv_horario_ida_passageiro_embarque.setText("");
             }
 
             if (passageiro.getCronograma().getReturnTime() != null) {
                 viewHolderClass.tv_horario_volta_passageiro_embarque.setText("Horário de volta: " + passageiro.getCronograma().getReturnTime());
             } else {
-                viewHolderClass.tv_horario_volta_passageiro_embarque.setText(""); // Ou outro valor padrão
+                viewHolderClass.tv_horario_volta_passageiro_embarque.setText("");
             }
         } else {
-            viewHolderClass.tv_horario_ida_passageiro_embarque.setText(""); // Ou outro valor padrão
-            viewHolderClass.tv_horario_volta_passageiro_embarque.setText(""); // Ou outro valor padrão
+            viewHolderClass.tv_horario_ida_passageiro_embarque.setText("");
+            viewHolderClass.tv_horario_volta_passageiro_embarque.setText("");
         }
     }
 

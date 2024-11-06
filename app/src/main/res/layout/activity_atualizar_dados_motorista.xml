@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lista_passageiros"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".Activity.AtualizarDadosMotoristaActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txt_atualizar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Atualizar dados"
+                android:textColor="@color/white"
+                android:textSize="36sp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="24dp"
+                />
+
+            <TextView
+                android:id="@+id/txt_nome"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Nome"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                />
+
+            <EditText
+                android:id="@+id/edt_nome_driver"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:hint="Nome"
+                android:inputType="textPersonName"
+                android:padding="12dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:id="@+id/txt_sobrenome"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Sobrenome"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                 />
+
+            <EditText
+                android:id="@+id/edt_sobrenome_driver"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:backgroundTint="@color/white"
+                android:hint="Sobrenome"
+                android:inputType="textPersonName"
+                android:padding="12dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                 />
+
+            <TextView
+                android:id="@+id/txt_cpf"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="CPF"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                />
+
+            <EditText
+                android:id="@+id/edt_cpf_driver"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:backgroundTint="@color/white"
+                android:hint="CPF"
+                android:inputType="number"
+                android:padding="12dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                />
+
+            <TextView
+                android:id="@+id/txt_cnh"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="CNH"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                 />
+
+            <EditText
+                android:id="@+id/edt_cnh_driver"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:hint="CNH"
+                android:inputType="number"
+                android:padding="12dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:layout_marginBottom="5dp"
+                 />
+
+            <TextView
+                android:id="@+id/txt_telefone"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Telefone"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                 />
+
+            <EditText
+                android:id="@+id/edt_telefone_driver"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:hint="Telefone"
+                android:inputType="phone"
+                android:padding="12dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:layout_marginBottom="5dp"
+                 />
+
+            <TextView
+                android:id="@+id/txt_data_nascimento"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Data de nascimento"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                 />
+
+            <EditText
+                android:id="@+id/edt_data_nascimento_driver"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:hint="Data de Nascimento"
+                android:inputType="date"
+                android:padding="12dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                 />
+
+            <TextView
+                android:id="@+id/txt_email"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="E-mail"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                 />
+
+            <EditText
+                android:id="@+id/edt_email_driver"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+
+                android:backgroundTint="@color/white"
+                android:hint="E-mail"
+                android:inputType="textEmailAddress"
+                android:padding="12dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                />
+
+            <Button
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                app:backgroundTint="@android:color/white"
+                android:textColor="@android:color/holo_orange_dark"
+                android:text="Atualizar"
+                android:layout_marginTop="24dp"
+                android:id="@+id/btn_atualizar"
+                />
+
+            <Button
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                app:backgroundTint="#ffb300"
+                android:textColor="@color/white"
+                android:text="Cancelar"
+                android:id="@+id/btn_cancelar"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="15dp"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/selecionar_dias"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/txt_selecionar_dias"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp"
+                android:text="Selecione os dias:"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:layout_marginBottom="12dp"
+                android:layout_marginTop="20dp"/>
+
+            <!-- Checkboxes para os dias da semana -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                >
+
+                <CheckBox
+                    android:id="@+id/checkbox_monday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Seg"
+                    android:textColor="@android:color/white"
+                    android:layout_margin="5dp"/>
+
+                <CheckBox
+                    android:id="@+id/checkbox_tuesday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ter"
+                    android:textColor="@android:color/white"
+                    android:layout_margin="5dp"/>
+
+                <CheckBox
+                    android:id="@+id/checkbox_wednesday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Qua"
+                    android:textColor="@android:color/white"
+                    android:layout_margin="10dp"/>
+
+                <CheckBox
+                    android:id="@+id/checkbox_thursday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Qui"
+                    android:textColor="@android:color/white"
+                    android:layout_margin="5dp"/>
+
+                <CheckBox
+                    android:id="@+id/checkbox_friday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sex"
+                    android:textColor="@android:color/white"
+                    android:layout_margin="5dp"/>
+
+            </LinearLayout>
+
+            <!-- TimePickers para horários de ida e volta -->
+            <TextView
+                android:id="@+id/ida"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Horário de início:"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+            <TimePicker
+                android:id="@+id/time_picker_going"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:timePickerMode="spinner"
+                android:tint="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/volta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Horário de término:"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:tint="#FFFFFF" />
+
+            <TimePicker
+                android:id="@+id/time_picker_return"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:timePickerMode="spinner"
+                android:tint="#FFFFFF" />
+
+            <!-- Botão para salvar os dados -->
+            <Button
+                android:id="@+id/btn_save_schedule"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="Salvar"
+                android:textColor="#ffa600"
+                app:backgroundTint="#ffffff" />
+
+            <Button
+                android:id="@+id/btn_cancelar_schedule"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="Cancelar"
+                android:textColor="@color/white"
+                app:backgroundTint="#ffb300" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
