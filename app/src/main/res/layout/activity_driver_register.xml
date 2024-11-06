@@ -158,7 +158,7 @@
 
         <Button
             android:id="@+id/btn_registrar_driver_register"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
             android:textColor="@android:color/holo_orange_dark"
@@ -167,12 +167,12 @@
 
         <Button
             android:id="@+id/btn_voltar_driver_register"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:backgroundTint="#ffb300"
             android:textColor="@color/white"
             android:text="Voltar"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="1dp"/>
 
         <ProgressBar
             android:id="@+id/loginProgressbar_driver_register"

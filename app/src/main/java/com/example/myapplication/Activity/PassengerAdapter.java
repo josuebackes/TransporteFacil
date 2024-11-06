@@ -34,7 +34,7 @@ public class PassengerAdapter extends RecyclerView.Adapter<PassengerAdapter.Pass
     @Override
     public void onBindViewHolder(@NonNull PassengerViewHolder holder, int position) {
         PassengerUserModel passenger = passengers.get(position);
-        holder.nameTextView.setText("Nome: " + passenger.getNome());
+        holder.nameTextView.setText("Nome: " + passenger.getNome() + " " + passenger.getSobrenome());
         holder.addressTextView.setText("Endereço: " + (passenger.getEndereco() != null ? passenger.getEndereco() : ""));
         holder.goingTimeTextView.setText("Horário de ida: " + (passenger.getCronograma() != null ? passenger.getCronograma().getGoingTime() : ""));
         holder.returnTimeTextView.setText("Horário de volta: " + (passenger.getCronograma() != null ? passenger.getCronograma().getReturnTime() : ""));
