@@ -14,20 +14,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Controle de passageiros do dia"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:textSize="20dp"
         android:layout_marginTop="12dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_embarque"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:padding="16dp"/>
 
     <Button
@@ -36,23 +30,17 @@
         android:layout_height="wrap_content"
         android:text="Salvar"
         android:textColor="#ffb300"
-        app:backgroundTint="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/voltar_embarque"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:backgroundTint="@color/white"
+        android:layout_marginTop="8dp"/>
 
     <Button
         android:id="@+id/voltar_embarque"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="Voltar"
-        android:layout_marginTop="1dp"
         android:textColor="@color/white"
-        app:backgroundTint="#ffb300"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        android:backgroundTint="#ffb300"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="12dp"/>
 
 </LinearLayout>
