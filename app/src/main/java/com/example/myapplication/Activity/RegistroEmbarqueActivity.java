@@ -1,7 +1,11 @@
 package com.example.myapplication.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,11 +29,15 @@ public class RegistroEmbarqueActivity extends AppCompatActivity {
     private static final String TAG = "RegistroEmbarqueActivity";
     List<PassengerUserModel> allPassengers = new ArrayList<>();
     EmbarqueAdapter embarqueAdapter;
+    Button btnSalvarEmbarque;
+    Button btnVoltar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_embarque);
+
+        btnVoltar = findViewById(R.id.voltar_embarque);
 
         RecyclerView recyclerView = findViewById(R.id.rv_embarque);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -38,6 +46,15 @@ public class RegistroEmbarqueActivity extends AppCompatActivity {
         recyclerView.setAdapter(embarqueAdapter);
 
         loadPassengersFromFirebase();
+
+        btnVoltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegistroEmbarqueActivity.this, DriverMainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void loadPassengersFromFirebase() {
