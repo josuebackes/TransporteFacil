@@ -4,10 +4,10 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-10-25T12:04:41.230282600Z">
+        <DropdownSelection timestamp="2024-12-19T00:18:02.586279900Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="PhysicalDevice" identifier="serial=RX8T5071ZNR" />
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\pichau\.android\avd\Medium_Phone_API_35.avd" />
             </handle>
           </Target>
         </DropdownSelection>
