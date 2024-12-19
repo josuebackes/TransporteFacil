@@ -28,7 +28,7 @@
         android:id="@+id/salvar_embarque"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Salvar"
+        android:text="Iniciar Viagem"
         android:textColor="#ffb300"
         android:backgroundTint="@color/white"
         android:layout_marginTop="8dp"/>

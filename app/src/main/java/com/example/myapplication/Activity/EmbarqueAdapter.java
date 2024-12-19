@@ -88,4 +88,7 @@ public class EmbarqueAdapter extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
+    public List<PassengerUserModel> getFilteredPassengers() {
+        return passageiros; // Retorna a lista atual que está sendo exibida
+    }
 }

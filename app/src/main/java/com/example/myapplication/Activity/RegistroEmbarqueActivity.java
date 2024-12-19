@@ -1,6 +1,7 @@
 package com.example.myapplication.Activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -38,6 +39,7 @@ public class RegistroEmbarqueActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registro_embarque);
 
         btnVoltar = findViewById(R.id.voltar_embarque);
+        btnSalvarEmbarque = findViewById(R.id.salvar_embarque);
 
         RecyclerView recyclerView = findViewById(R.id.rv_embarque);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -53,6 +55,13 @@ public class RegistroEmbarqueActivity extends AppCompatActivity {
                 Intent intent = new Intent(RegistroEmbarqueActivity.this, DriverMainActivity.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+
+        btnSalvarEmbarque.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gerarRotaNoGoogleMaps();
             }
         });
     }
@@ -92,5 +101,46 @@ public class RegistroEmbarqueActivity extends AppCompatActivity {
         Log.d(TAG, "Total de passageiros filtrados: " + filteredPassengers.size());
 
         embarqueAdapter.updateData(filteredPassengers);
+    }
+
+    private void gerarRotaNoGoogleMaps() {
+        List<PassengerUserModel> filteredPassengers = embarqueAdapter.getFilteredPassengers();
+
+        if (filteredPassengers == null || filteredPassengers.isEmpty()) {
+            Log.d(TAG, "Nenhum passageiro filtrado disponível para gerar rota.");
+            return;
+        }
+
+        // Endereço fixo do destino final
+        String destinoFinalFixo = "R. Arlíndo Pasqualini, 580 - Vila Nova, Novo Hamburgo - RS, 93525-070, Brazil";
+
+        // Montar a string com os endereços dos passageiros para o Google Maps
+        StringBuilder waypoints = new StringBuilder();
+        for (PassengerUserModel passenger : filteredPassengers) {
+            if (passenger.getEndereco() != null && !passenger.getEndereco().isEmpty()) {
+                waypoints.append(passenger.getEndereco()).append("|");
+            }
+        }
+
+        if (waypoints.length() > 0) {
+            waypoints.setLength(waypoints.length() - 1); // Remove o último "|"
+        }
+
+        // URL para Google Maps Directions
+        String baseUrl = "https://www.google.com/maps/dir/?api=1";
+        String mapUrl = baseUrl
+                + "&origin=current+location" // Localização atual
+                + "&destination=" + Uri.encode(destinoFinalFixo) // Destino fixo
+                + "&waypoints=" + Uri.encode(waypoints.toString()); // Paradas intermediárias
+
+        // Abrir o Google Maps com a rota
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(mapUrl));
+        intent.setPackage("com.google.android.apps.maps");
+
+        try {
+            startActivity(intent);
+        } catch (Exception e) {
+            Log.e(TAG, "Erro ao abrir Google Maps: " + e.getMessage());
+        }
     }
 }
